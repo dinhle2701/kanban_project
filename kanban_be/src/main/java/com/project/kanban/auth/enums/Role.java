@@ -1,4 +1,4 @@
-package com.project.kanban.enums;
+package com.project.kanban.auth.enums;
 
 public enum Role {
     ROLE_EMPLOYEE,

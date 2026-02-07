@@ -1,6 +1,6 @@
 package com.project.kanban.utils;
 
-import com.project.kanban.auth.model.User;
+import com.project.kanban.user.model.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -33,12 +33,12 @@ public class JwtUtils {
         claims.put("id", user.getId());
         claims.put("email", user.getEmail());
         claims.put("role", user.getRole().name());
-        claims.put("fullname", user.getFullname());
+        claims.put("fullname", user.getFullName());
         claims.put("isActive", user.isActive());
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(user.getUsername())
+                .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS512)

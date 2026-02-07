@@ -1,6 +1,6 @@
-package com.project.kanban.auth.repository;
+package com.project.kanban.user.repository;
 
-import com.project.kanban.auth.model.User;
+import com.project.kanban.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +8,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+
     Optional<User> findByUsername(String username);
 
     Boolean existsByUsername(String username);
